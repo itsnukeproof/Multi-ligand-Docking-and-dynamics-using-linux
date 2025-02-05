@@ -1,0 +1,15 @@
+#prerequisites
+sudo apt install openbabel {file_conversion_software}
+sudo apt install autodock_vina {docking_software}
+
+#ligand preparation
+obabel -isdf file_name.sdf -osdf -O *.sdf --split {splting ligand analogs}
+obminimaize -ff MMFF94 -n 1000 *.sdf {energy minimization}
+obabel -isdf *.sdf -opdbqt -O *.pdbqt {convert sdf to pdbqt}
+ls >ligand.txt {ligand file}
+
+#running autodock software
+perl Vina_linux.pl
+
+#results log file generation
+tail -n11 *.log >results.txt
