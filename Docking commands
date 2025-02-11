@@ -4,7 +4,7 @@ sudo apt install autodock_vina {docking_software}
 
 #ligand preparation
 obabel -isdf file_name.sdf -osdf -O *.sdf --split {splting ligand analogs}
-obminimaize -ff MMFF94 -n 1000 *.sdf {energy minimization}
+obminimize -ff MMFF94 -n 1000 *.sdf {energy minimization}
 obabel -isdf *.sdf -opdbqt -O *.pdbqt {convert sdf to pdbqt}
 ls >ligand.txt {ligand file}
 
