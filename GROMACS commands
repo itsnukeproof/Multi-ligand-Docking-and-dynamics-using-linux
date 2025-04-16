@@ -222,7 +222,7 @@ gmx grompp -f npt.mdp -c nvt.gro -r nvt.gro -p topol.top -n index.ndx -o npt.tpr
     or
 gmx grompp -f npt.mdp -c nvt.gro -r nvt.gro -p topol.top -n index.ndx -maxwarn 2 -o npt.tpr
 	
-gmx mdrun -deffnm npt
+gmx mdrun -v -deffnm npt
 
 -----[FINAL MD RUN/PRODUCTION]-----
 gedit NPT.mdp (Change MD RUN TIME as per your need)
@@ -231,7 +231,7 @@ gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -maxwarn 2 
    or
 gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -n index.ndx -o md.tpr
 
-gmx mdrun -deffnm md
+gmx mdrun -v -deffnm md
 
 
 ----[Recentering and Rewrapping Coordinates]----
