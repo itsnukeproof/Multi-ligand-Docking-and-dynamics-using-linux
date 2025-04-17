@@ -267,7 +267,7 @@ protein then ligand
 xmgrace hb.xvg
 
 --------------Gyration Radius------------------
-gmx gyrate -s md.tpr -f md_center.xtc -n index.ndx -o gyrate.xvg
+gmx gyrate -s md.tpr -f md_center.xtc -n index.ndx -o gyrate.xvg -tu ns
 protein_LIG
 xmgrace gyrate1.xvg
 
