@@ -244,9 +244,8 @@ gmx trjconv -s md.tpr -f md_center.xtc -o start.pdb -dump 0
 
 ------RMSD Calculations-----
 gmx rms -s md.tpr -f md_center.xtc -o rmsd.xvg
-gmx rms -s md.tpr -f md_center.xtc -o rmsd.xvg -tu ns
-4
-13
+gmx rms -s md_0_10.tpr -f md_0_10_center.xtc -n index.ndx -o rmsd.xvg
+"backbone" for both
 
 
 #(Select appropritate 2 options one by one and then open the output files in Grace) Select Backbone and then LIG
@@ -254,8 +253,8 @@ gmx rms -s md.tpr -f md_center.xtc -o rmsd.xvg -tu ns
 xmgrace rmsd.xvg
 
 ------RMSF Calculations-----
-gmx rmsf -s md.tpr -f md_center.xtc -o rmsf.xvg
-4
+gmx rmsf -s md.tpr -f md_center.xtc -n index.ndx -o rmsf.xvg -res
+C-alpha/protein
 
 (Select appropritate Backbone open the output files in Grace)
 
@@ -264,13 +263,17 @@ xmgrace output.xvg
 -----------h-bonds-------------------
 gmx hbond -s md.tpr -f md_center.xtc -num hb.xvg
 gmx hbond -s md.tpr -f md_center.xtc -num hb.xvg -tu ns
-1
-13
+protein then ligand
 xmgrace hb.xvg
 
 --------------Gyration Radius------------------
-gmx gyrate -s md.tpr -f md_center.xtc -o gyrate1.xvg
-#Choose the group of your choice 
+gmx gyrate -s md.tpr -f md_center.xtc -n index.ndx -o gyrate.xvg
+protein_LIG
+xmgrace gyrate1.xvg
+
+--------------SASA------------------
+gmx sasa -s md.tpr -f md_center.xtc -n index.ndx -o sasa.xvg
+protein_LIG
 xmgrace gyrate1.xvg
 
 -------------ENERGY Calculations---------------
