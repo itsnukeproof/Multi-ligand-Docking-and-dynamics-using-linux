@@ -244,7 +244,7 @@ gmx trjconv -s md.tpr -f md_center.xtc -o start.pdb -dump 0
 
 ------RMSD Calculations-----
 gmx rms -s md.tpr -f md_center.xtc -o rmsd.xvg
-gmx rms -s md_0_10.tpr -f md_0_10_center.xtc -n index.ndx -o rmsd.xvg
+gmx rms -s md.tpr -f md_center.xtc -n index.ndx -o rmsd.xvg -tu ns
 "backbone" for both
 
 
@@ -272,7 +272,7 @@ protein_LIG
 xmgrace gyrate1.xvg
 
 --------------SASA------------------
-gmx sasa -s md.tpr -f md_center.xtc -n index.ndx -o sasa.xvg
+gmx sasa -s md.tpr -f md_center.xtc -n index.ndx -o sasa.xvg -tu ns
 protein_LIG
 xmgrace gyrate1.xvg
 
