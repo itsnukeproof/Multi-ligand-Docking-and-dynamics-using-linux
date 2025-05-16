@@ -104,7 +104,7 @@ perl sort_mol2_bonds.pl lig.mol2 lig_fix.mol2 script
 ---------GROMACS UBUNTU TUTORIAL-----------
 source /usr/local/gromacs/bin/GMXRC	(If Gromacs is manually compiled / not for dirty install)  
 
-gmx pdb2gmx -f REC.pdb -ignh
+gmx pdb2gmx -f REC.pdb -o REC.gro -ignh
 1 (CHARMM36)
 1 (TIP3P)
 gmx editconf -f lig_ini.pdb -o lig.gro
