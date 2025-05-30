@@ -1,14 +1,15 @@
-gmx pdb2gmx -f 3wzd.pdb -o 3wzd_processed.gro -water spce
+gmx pdb2gmx -f rec.pdb -o rec_processed.gro -water spce
 
-gmx editconf -f 3wzd_processed.gro -o 3wzd_newbox.gro -c -d 1.0 -bt cubic
+gmx editconf -f rec_processed.gro -o rec_newbox.gro -c -d 1.0 -bt cubic
 
-gmx solvate -cp 3wzd_newbox.gro -cs spc216.gro -o 3wzd_solv.gro -p topol.top
+gmx solvate -cp rec_newbox.gro -cs spc216.gro -o rec_solv.gro -p topol.top
 
-gmx grompp -f ions.mdp -c 3wzd_solv.gro -p topol.top -o ions.tpr
+gmx grompp -f ions.mdp -c rec_solv.gro -p topol.top -o ions.tpr
 
-gmx genion -s ions.tpr -o 3wzd_solv_ions.gro -p topol.top -pname SOD -nname CLA -neutral
+gmx genion -s ions.tpr -o rec_solv_ions.gro -p topol.top -pname SOD -nname CLA -neutral
+choose "13" SOL
 
-gmx grompp -f minim.mdp -c 3wzd_solv_ions.gro -p topol.top -o em.tpr
+gmx grompp -f em.mdp -c rec_solv_ions.gro -p topol.top -o em.tpr
 
 gmx mdrun -v -deffnm em -nt 14
 writing lowest energy coordinates.
